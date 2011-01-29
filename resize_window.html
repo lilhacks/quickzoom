@@ -1,0 +1,14 @@
+<html>
+<div id="foo">
+</div>
+
+<body>
+<script>
+chrome.extension.onRequest.addListener(function(req) {
+  chrome.windows.getCurrent(function(w) {
+    chrome.windows.update(w.id, {width: req.width});
+  });
+});
+</script>
+</body>
+</html>

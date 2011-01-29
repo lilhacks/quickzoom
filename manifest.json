@@ -1,0 +1,12 @@
+{
+    "name": "QuickZoom",
+    "version": "0.0.91",
+    "description": "alt-click to resize the window to an element. alt-p for page width. alt-r to restore.",
+    "permissions": ["tabs"],
+    "background_page": "resize_window.html",
+    "content_scripts": [
+	{
+	    "matches": ["<all_urls>"],
+	    "js": ["capture_click.js"]
+	}]
+}
