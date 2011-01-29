@@ -1,7 +1,8 @@
 {
     "name": "QuickZoom",
-    "version": "0.0.91",
-    "description": "alt-click to resize the window to an element. alt-p for page width. alt-r to restore.",
+    "version": "0.0.92",
+    "description": "iPhone-like zooming. Alt-Click to resize the window to fit a page element. Alt-r to restore original window width.",
+    "icons": { "128": "icon128.png" },
     "permissions": ["tabs"],
     "background_page": "resize_window.html",
     "content_scripts": [

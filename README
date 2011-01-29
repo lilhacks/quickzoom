@@ -1,0 +1,6 @@
+iPhone-like zoom for Chrome.
+
+Alt-Click on the page to "zoom" into part of the page (zooming resizes 
+the browser window to hide the rest of the page). Use Alt-r to restore 
+the original window width, or Alt-p to resize the window to the page's 
+width.
