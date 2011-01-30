@@ -1,6 +1,6 @@
 {
     "name": "QuickZoom",
-    "version": "0.0.92",
+    "version": "0.0.98",
     "description": "iPhone-like zooming. Alt-Click to resize the window to fit a page element. Alt-r to restore original window width.",
     "icons": { "128": "icon128.png" },
     "permissions": ["tabs"],

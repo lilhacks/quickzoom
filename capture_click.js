@@ -1,6 +1,6 @@
 var new_xpos;
 var orig_win_width = window.innerWidth;
-var SCROLLBAR_WIDTH = window.innerWidth - document.body.clientWidth;
+var SCROLLBAR_WIDTH = window.outerWidth - document.body.clientWidth;
 
 function tryAdjustView() {
   // annoyingly, scrollTo sometimes fails. don't know why, so use this
@@ -15,19 +15,21 @@ document.addEventListener('click', function(evt) {
   var rel_offset = 0;
   var el = evt.target;
 
-  if (evt.altKey) {
-    do {
-	rel_offset += el.offsetLeft;
-	el = el.offsetParent;
-    } while (el);
+  if (!evt.altKey) { return; }
 
-    // avoid reflow, for fluid layouts (mukesh.20110128)
-    document.body.style.minWidth = document.body.offsetWidth + "px";
-    chrome.extension.sendRequest(
-      {width: evt.target.offsetWidth + SCROLLBAR_WIDTH + 10});
-    new_xpos = rel_offset - 5;
-    tryAdjustView();
-  }
+  do {
+    rel_offset += el.offsetLeft;
+    el = el.offsetParent;
+  } while (el);
+
+  // avoid reflow, for fluid layouts (mukesh.20110128)
+  document.body.style.minWidth = document.body.offsetWidth + "px";
+  chrome.extension.sendRequest(
+    {width: evt.target.offsetWidth + SCROLLBAR_WIDTH + 10});
+  new_xpos = rel_offset - 5;
+  tryAdjustView();
+
+  evt.preventDefault();
 });
 
 document.addEventListener('keyup', function(evt) {
@@ -43,4 +45,6 @@ document.addEventListener('keyup', function(evt) {
     new_xpos = 0;
     tryAdjustView();
   }
+
+  evt.preventDefault();
 });
